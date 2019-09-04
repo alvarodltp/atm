@@ -7,10 +7,14 @@ class App extends React.Component {
     super()
     this.state = {
       transactions: null,
+      selectedTransactions: null,
       balalance: 2000,
       withdrawValue: "",
       error: "",
-      paginationArr: null
+      paginationArr: null,
+      paginationStyle: null,
+      currentPageNumber: "",
+      pageName: ""
     }
   }
 
@@ -26,11 +30,12 @@ class App extends React.Component {
       let initialBalance = amountArr.reduce((a, b) => a + b, 0);
       let paginationNumber = Math.ceil(json.transactions.length / 5);
       let paginationArr = [...Array(paginationNumber+1).keys()].slice(1);
-      debugger
+      let selectedTransactions = json.transactions.slice(0, 5); 
       this.setState({
         transactions: json.transactions,
+        selectedTransactions: selectedTransactions,
         balance: initialBalance,
-        pagination: paginationArr
+        paginationArr: paginationArr
       });
     })
   }
@@ -65,13 +70,31 @@ class App extends React.Component {
     });
   }
 
+  handlePagination = (page) => {
+    let transactions = [...this.state.transactions]
+    let toPost = page * 5;
+    let fromPost = toPost - 5;
+    let selectedTransactions = transactions.slice(fromPost, toPost);
+    this.setState({
+      selectedTransactions: selectedTransactions,
+      currentPageNumber: page,
+      paginationStyle: {color: '#F10270', borderBottom: '3px solid #F10270'}
+    });
+  }
+
+  handlePageChange = (pageName) => {
+    this.setState({
+      pageName: pageName
+    });
+  }
+
   render(){
-    const { transactions, balance, withdrawValue, error, paginationArr } = this.state
+    const { transactions, balance, withdrawValue, error, paginationArr, selectedTransactions, paginationStyle, currentPageNumber, pageName } = this.state
     return (
-      <div>
+      <React.Fragment>
         {transactions && 
-        <AtmContainer paginationArr={paginationArr} error={error} withdraw={this.withdraw} withdrawValue={withdrawValue} balance={balance} transactions={transactions} handleChange={this.handleChange} /> }
-      </div>
+        <AtmContainer currentPageNumber={currentPageNumber} paginationStyle={paginationStyle} handlePagination={this.handlePagination} paginationArr={paginationArr} error={error} withdraw={this.withdraw} withdrawValue={withdrawValue} balance={balance} selectedTransactions={selectedTransactions} handleChange={this.handleChange} handlePageChange={this.handlePageChange} pageName={pageName}/> }
+      </React.Fragment>
     );
   }
 }

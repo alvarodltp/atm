@@ -8,7 +8,9 @@ const Withdraw = (props) => {
       <div className="withdraw-container">
         <p className="withdraw-title">Withdraw Cash</p>
         <div className="withdraw-form">
-          <div className="dollar"><Input onChange={props.handleChange} type="number" className="withdraw-input" size="huge" placeholder="Enter a dollar amount" value={props.withdrawValue}/></div>
+          <div className="dollar">
+            <Input onChange={props.handleChange} type="number" className="withdraw-input" size="huge" placeholder="0.00" value={props.withdrawValue}/>
+          </div>
           <div onClick={props.withdraw} className="withdraw-button">
             Withdraw
           </div>

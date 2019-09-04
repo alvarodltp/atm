@@ -4,12 +4,15 @@ import './RecentTransactions.css';
 const RecentTransactions = (props) => {
   return(
     <div className="transaction-container">
-      <p className="title">Recent Transactions</p>
-      {props.transactions.map((transaction, i) => 
+      {props.selectedTransactions.map((transaction, i) => 
       <div key={i} className="transaction">
         <p className="name">{transaction.name}</p>
         <p className="amount">${transaction.amount}</p>
       </div> )}
+
+      <div className="pagination">
+        {props.paginationArr.map((number, i) => <div style={props.currentPageNumber === number ? props.paginationStyle : null} key={i} onClick={() => {props.handlePagination(number)}}>{number}</div>)}
+      </div>
     </div>
   )
 }
