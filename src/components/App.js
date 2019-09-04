@@ -8,7 +8,7 @@ class App extends React.Component {
     this.state = {
       transactions: null,
       selectedTransactions: null,
-      balalance: 2000,
+      balance: 2000,
       withdrawValue: "",
       error: "",
       paginationArr: null,
@@ -47,8 +47,11 @@ class App extends React.Component {
   }
 
   withdraw = () => {
-    let withdrawValue = this.state.withdrawValue;
-    let balance = this.state.balance;
+    const { withdrawValue, balance } = this.state
+    let transactions = [...this.state.transactions];
+    let selectedTransactions;
+    let paginationNumber;
+    let paginationArr;
     let error;
     let newBalance;
     if(withdrawValue <= 0){
@@ -62,11 +65,19 @@ class App extends React.Component {
       newBalance = balance
     } else {
       newBalance = balance - withdrawValue
+      transactions.unshift({name: "Withdrawal", amount: withdrawValue})
+      selectedTransactions = transactions.slice(0, 5); 
+      paginationNumber = Math.ceil(transactions.length / 5);
+      paginationArr = [...Array(paginationNumber+1).keys()].slice(1);
     }  
     this.setState({
       balance: newBalance,
       withdrawValue: "",
-      error: error
+      error: error,
+      transactions: transactions,
+      selectedTransactions: selectedTransactions,
+      paginationNumber: paginationNumber,
+      paginationArr: paginationArr
     });
   }
 
