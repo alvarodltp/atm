@@ -1,0 +1,43 @@
+.withdraw-container {
+  padding: 20px;
+}
+
+.withdraw-form {
+  display: flex;
+  justify-content: center;
+}
+
+.withdraw-container .withdraw-title {
+  text-align: center;
+  color: #5DBCD2;
+}
+
+.withdraw-button {
+  padding: 15px;
+  background: #F10270;
+  color: white;
+  cursor: pointer;
+}
+
+.ui.input input {
+  border-radius: 0;
+}
+
+.dollar{
+	display:inline-block;
+	position: relative;
+}
+
+.dollar .ui.input input{
+	padding-left:15px;
+}
+
+.dollar:before {
+	position: absolute;
+  content:"$";
+  left: 5px;
+  top: 18px;
+  color: black;
+  z-index: 1;
+}
+

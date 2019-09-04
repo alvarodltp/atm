@@ -1,9 +1,10 @@
 import React from 'react';
+import './Amount.css'
 
-const Amount = () => {
+const Amount = (props) => {
   return(
-    <div>
-      Amount
+    <div className="initial-balance-container">
+      <p>${props.balance}</p>
     </div>
   )
 }

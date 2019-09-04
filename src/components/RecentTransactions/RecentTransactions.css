@@ -1,6 +1,30 @@
 .transaction-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  align-items: left;
+  padding: 20px;
+  margin: 0 auto;
+  width: 60%;
 }
+
+.title {
+  font-size: 25px;
+  font-weight: 800;
+  text-align: center;
+  color: #5DBCD2;
+}
+
+.transaction {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  border-bottom: 1px solid #F10270;
+}
+
+.name {
+  margin: 0;
+  padding: 10px;
+}
+
+.amount {
+  text-align: right;
+}
+
+

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Amount = () => {
+const Pagination = () => {
   return(
     <div>
-      Amount
+      Pagination
     </div>
   )
 }
 
-export default Amount 
+export default Pagination 
