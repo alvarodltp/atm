@@ -2,20 +2,24 @@ import React from 'react';
 import Amount from '../Amount/Amount';
 import Withdraw from '../Withdraw/Withdraw';
 import RecentTransactions from '../RecentTransactions/RecentTransactions';
-import PageButtons from '../PageButtons/PageButtons'
+import PageButtons from '../PageButtons/PageButtons';
+import RemainingBalanceChart from '../RemainingBalance/RemainingBalanceChart';
 
 const AtmContainer = (props) => {
   return (
     <React.Fragment>
-      <h1 style={{padding: "10px", fontSize: "40px", margin: "0"}}>ATM</h1>
       <Amount balance={props.balance} />
-      <Withdraw error={props.error} withdraw={props.withdraw} handleChange={props.handleChange} withdrawValue={props.withdrawValue} />
+      <Withdraw {...props} />
       <PageButtons handlePageChange={props.handlePageChange}/>
       {props.pageName === "Recent Transactions" && 
-      <RecentTransactions selectedTransactions={props.selectedTransactions} paginationStyle={props.paginationStyle} currentPageNumber={props.currentPageNumber} handlePagination={props.handlePagination} paginationArr={props.paginationArr}/> }
+      <RecentTransactions {...props}/> }
+      {props.pageName === "Remaining Balance" && 
+      <RemainingBalanceChart {...props} /> }
     </React.Fragment>
   );
 }
 
-
 export default AtmContainer;
+
+
+{/* <h1 style={{padding: "10px", fontSize: "40px", margin: "0", position: "relative"}}>ATM</h1> */}
