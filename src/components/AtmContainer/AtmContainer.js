@@ -10,7 +10,7 @@ const AtmContainer = (props) => {
     <React.Fragment>
       <Amount balance={props.balance} />
       <Withdraw {...props} />
-      <PageButtons handlePageChange={props.handlePageChange}/>
+      <PageButtons {...props} />
       {props.pageName === "Recent Transactions" && 
       <RecentTransactions {...props}/> }
       {props.pageName === "Remaining Balance" && 

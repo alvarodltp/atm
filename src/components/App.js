@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import AtmContainer from './AtmContainer/AtmContainer'
-import toFixed from './Number'
+import AtmContainer from './AtmContainer/AtmContainer';
+import toFixed from './Number';
 
 class App extends React.Component {
   constructor(){
@@ -17,7 +17,7 @@ class App extends React.Component {
       paginationStyle: null,
       currentPageNumber: "",
       pageName: "",
-      data: null
+      data: null,
     }
   }
 
