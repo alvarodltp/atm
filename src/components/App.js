@@ -27,8 +27,10 @@ class App extends React.Component {
 
   getTransactions = () => {
     fetch("https://app.fakejson.com/q/0Pm3bJKu?token=HbqwPS-BSqOehLpig2ePqg")
-    .then(response => response.json())
-    .then(json => {
+    .then((response) => {
+      console.log(response);
+      response.json()
+      .then((json) => {
       let allExpenses = json.transactions.map(t => t.amount).reduce((a, b) => a + b, 0);
       let expensePercent = toFixed((allExpenses * 100) / this.state.balance, 2);
       let balance = toFixed(this.state.balance - allExpenses, 2);
@@ -40,14 +42,15 @@ class App extends React.Component {
       let selectedTransactions = json.transactions.slice(0, 5); 
       let data = [{ name: "Expenses", value: Number(expensePercent) }, { name: "Remaining Balance", value: Number(balancePercent) }];
       
-      this.setState({
-        allExpenses: allExpenses,
-        transactions: json.transactions,
-        selectedTransactions: selectedTransactions,
-        balance: balance,
-        paginationArr: paginationArr,
-        data: data
-      });
+        this.setState({
+          allExpenses: allExpenses,
+          transactions: json.transactions,
+          selectedTransactions: selectedTransactions,
+          balance: balance,
+          paginationArr: paginationArr,
+          data: data
+        });
+      })
     })
   }
 
@@ -58,33 +61,45 @@ class App extends React.Component {
   }
 
   withdraw = () => {
-    const { withdrawValue, balance } = this.state
+    const { withdrawValue, balance } = this.state;
     let transactions = [...this.state.transactions];
     let error;
     let newBalance;
     let allExpenses;
+    let newExpensePercent;
+    let newBalancePercent;
+    let data;
     if(withdrawValue <= 0 || withdrawValue === ""){
-      error = "Withdrawal amount must be a at least $20.00."
+      error = "Withdrawal amount must be at least $20.00."
       newBalance = toFixed(balance, 2)
+      this.setState({ balance: newBalance, error: error });
     } else if (withdrawValue != 20){
       error = "You can only withdraw in increments of $20.00."
       newBalance = toFixed(balance, 2)
+      this.setState({ balance: newBalance, error: error });
     } else if (withdrawValue > balance){
       error = "You don't have enough funds."
       newBalance = toFixed(balance, 2)
+      this.setState({ balance: newBalance, error: error });
     } else {
       newBalance = toFixed(balance - withdrawValue, 2)
-      transactions.unshift({name: "Withdrawal", amount: withdrawValue})
-      //adds all the transactions together so the pie chart can be updated with every withdraw
+      transactions.unshift({name: "Withdrawal", amount: Number(withdrawValue)})
+      //adds all the new transactions together
       allExpenses = transactions.map(t => t.amount).reduce((a, b) => a + b, 0);
-    }  
-    this.setState({
-      balance: newBalance,
-      withdrawValue: "",
-      error: error,
-      transactions: transactions,
-      allExpenses: allExpenses
-    }, this.addTransactionToList(transactions));
+      newExpensePercent = toFixed((allExpenses * 100) / 2000, 2);
+      newBalancePercent = toFixed((newBalance * 100) / 2000, 2);
+      data = [{ name: "Expenses", value: Number(newExpensePercent) }, { name: "Remaining Balance", value: Number(newBalancePercent) }];
+
+      this.setState({
+        balance: newBalance,
+        withdrawValue: "",
+        transactions: transactions,
+        allExpenses: allExpenses,
+        expensePercent: newExpensePercent,
+        balancePercent: newBalancePercent,
+        data: data
+      }, this.addTransactionToList(transactions));
+    }   
   }
 
   addTransactionToList = (transactions) => {
@@ -140,3 +155,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+/* <h1 style={{padding: "10px", fontSize: "40px", margin: "0", position: "relative"}}>ATM</h1> */

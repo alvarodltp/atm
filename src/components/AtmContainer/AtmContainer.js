@@ -21,5 +21,3 @@ const AtmContainer = (props) => {
 
 export default AtmContainer;
 
-
-{/* <h1 style={{padding: "10px", fontSize: "40px", margin: "0", position: "relative"}}>ATM</h1> */}
