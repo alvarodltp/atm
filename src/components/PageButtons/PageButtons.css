@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-.recent-transactions {
+.recent-transaction {
   font-size: 25px;
   font-weight: 200;
   text-align: center;
@@ -27,6 +27,11 @@
   border: none;
 }
 
+.active-button { 
+  background: #F10270;
+  color: white;
+}
+
 @media screen and (max-width: 768px) {
   .button-container {
     display: grid;
@@ -36,7 +41,7 @@
     margin-top: 30px;
     padding: 5px 20px;
   }
-  .recent-transactions {
+  .recent-transaction {
     grid-row: 1/2;
     padding: 15px;
     margin: 0;

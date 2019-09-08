@@ -14,6 +14,9 @@
 }
 
 .withdraw-button {
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
   padding: 15px;
   background: #F10270;
   color: white;
@@ -45,6 +48,13 @@
   top: 14px;
   color: black;
   z-index: 1;
+}
+
+.error-message {
+  text-align: center; 
+  padding: 5px;
+  font-size: 16px; 
+  color: white;
 }
 
 @media screen and (max-width: 768px) {
