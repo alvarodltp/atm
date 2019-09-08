@@ -80,7 +80,7 @@ class App extends React.Component {
     let balance;
     let allExpenses;
 
-     if (withdrawValue > newBalance){
+     if (Number(withdrawValue) > Number(newBalance)){
       error = "You don't have enough funds."
       balance = Number(newBalance).toFixed(2);
       this.setState({ newBalance: balance, error: error });
