@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+.App {
+  -webkit-animation: fadein 3s; 
+  -moz-animation: fadein 3s; 
+  -ms-animation: fadein 3s; 
+  -o-animation: fadein 3s; 
+  animation: fadein 3s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
@@ -12,4 +24,14 @@ body {
   color: white;
   background: #0C3B97;
   position: relative;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.acct-title {
+  text-align: center;
+  margin: 30px;
 }

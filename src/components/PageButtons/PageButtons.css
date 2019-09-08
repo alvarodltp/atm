@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-.transaction-button {
+.recent-transactions {
   font-size: 25px;
   font-weight: 200;
   text-align: center;
@@ -12,4 +12,38 @@
   background: #5DBCD2;
   cursor: pointer;
   margin: 20px 10px;
+  border: none;
+}
+
+.remaining-balance {
+  font-size: 25px;
+  font-weight: 200;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  background: #5DBCD2;
+  cursor: pointer;
+  margin: 20px 10px;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .button-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 10px;
+    margin-top: 30px;
+    padding: 5px 20px;
+  }
+  .recent-transactions {
+    grid-row: 1/2;
+    padding: 15px;
+    margin: 0;
+  }
+  .remaining-balance {
+    grid-row: 2/3;
+    padding: 15px;
+    margin: 0;
+  }
 }

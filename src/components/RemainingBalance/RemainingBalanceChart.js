@@ -30,7 +30,6 @@ const RemainingBalanceChart = (props) => {
             const x = cx + radius * Math.cos(-midAngle * RADIAN);
             // eslint-disable-next-line
             const y = cy + radius * Math.sin(-midAngle * RADIAN);
-            console.log(RADIAN, radius, x, y)
             return (
               <text
                 x={x}

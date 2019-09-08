@@ -1,7 +1,7 @@
 .transaction-container {
-  padding: 20px;
+  width: 80%;
+  padding: 20px 100px;
   margin: 0 auto;
-  width: 60%;
 }
 
 .transaction {
@@ -40,3 +40,15 @@
   cursor: pointer;
   border-bottom: 3px solid #F10270;
 }
+
+.filter {
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .transaction-container {
+    padding: 20px 0px;
+  }
+}
+
+

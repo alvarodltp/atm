@@ -1,6 +1,9 @@
-.initial-balance-container {
+.initial-balance-container h1{
   font-size: 50px;
   font-weight: 800;
   text-align: center;
   margin: 30px 0;
+}
+
+@media screen and (max-width: 768px) {
 }

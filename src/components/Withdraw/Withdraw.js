@@ -9,14 +9,14 @@ const Withdraw = (props) => {
         <p className="withdraw-title">Withdraw Cash</p>
         <div className="withdraw-form">
           <div className="dollar">
-            <Input onChange={props.handleChange} type="number" className="withdraw-input" size="huge" placeholder="0.00" value={props.withdrawValue}/>
+            <Input onChange={props.handleChange} type="number" fluid className="withdraw-input" size="huge" placeholder="0.00" value={props.withdrawValue}/>
           </div>
-          <div onClick={props.withdraw} className="withdraw-button">
+          <button onClick={props.withdraw} className="withdraw-button">
             Withdraw
-          </div>
+          </button>
         </div>
         { props.error !== "" ?
-         <p style={{textAlign: "center", padding: "5px", fontSize: "14px", color: "red"}}>        {props.error}
+        <p style={{textAlign: "center", padding: "5px", fontSize: "16px", color: "white"}}>   {props.error}
          </p> : null }
       </div>
     </React.Fragment>

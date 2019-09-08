@@ -8,8 +8,9 @@ import RemainingBalanceChart from '../RemainingBalance/RemainingBalanceChart';
 const AtmContainer = (props) => {
   return (
     <React.Fragment>
-      <Amount balance={props.balance} />
+      <Amount {...props} />
       <Withdraw {...props} />
+      <h1 className="acct-title">Your Account</h1>
       <PageButtons {...props} />
       {props.pageName === "Recent Transactions" && 
       <RecentTransactions {...props}/> }

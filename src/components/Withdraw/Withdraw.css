@@ -1,15 +1,16 @@
 .withdraw-container {
   padding: 20px;
+  width: 100%;
 }
 
 .withdraw-form {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
 }
 
-.withdraw-container .withdraw-title {
-  text-align: center;
-  color: #5DBCD2;
+.ui.input input {
+  border-radius: 0;
 }
 
 .withdraw-button {
@@ -17,28 +18,54 @@
   background: #F10270;
   color: white;
   cursor: pointer;
+  border: none;
+  grid-column: 3/4;
 }
 
-.ui.input input {
-  border-radius: 0;
+.withdraw-container .withdraw-title {
+  text-align: center;
+  color: #5DBCD2;
 }
 
 .dollar{
 	display:inline-block;
-	position: relative;
+  position: relative;
+  grid-column: 2/3;
 }
 
 .dollar .ui.input input{
-	padding-left:15px;
+  text-align: center;
 }
 
 .dollar:before {
 	position: absolute;
   content:"$";
   font-size: 20px;
-  left: 5px;
+  left: 20%;
   top: 14px;
   color: black;
   z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .withdraw-container {
+    padding: 5px 20px;
+  }
+  .withdraw-form {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  .dollar{
+    grid-column: 1;
+    grid-row: 1/2;
+  }
+  .withdraw-button {
+    grid-column: 1;
+    grid-row: 2/3;
+  }
+  .dollar:before {
+    left: 20%;
+  }
 }
 
