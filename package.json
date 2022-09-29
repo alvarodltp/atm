@@ -8,7 +8,7 @@
     "react-scripts": "1.1.4",
     "react-spring": "^8.0.27",
     "react-transition-group": "^1.2.1",
-    "recharts": "^1.7.1",
+    "recharts": "^2.1.14",
     "semantic-ui-react": "^0.88.0"
   },
   "scripts": {
